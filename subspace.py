@@ -1,18 +1,20 @@
+"""subspace.py - module to perform linear algebra operations on a data matrix."""
+
 import numpy as np
 import cv2
 import sklearn
 from sklearn import neighbors
 from sklearn.decomposition import PCA
 
-"""
-    Apply Principal Component Analysis to data matrix with rank `rank`
-    Args:
-        data_matrix
-        rank
-    Returns:
-        numpy.ndarray
-"""
 def pca(data_matrix, rank):
+    """Apply Principal Component Analysis to data matrix with rank `rank`
+    
+    Args:
+        data_matrix (numpy.ndarray)
+        rank (int)
+    Returns:
+        numpy.ndarray:
+    """
     # Compute the eigenvectors from the stack of images created
     print("Calculating PCA with rank {}".format(rank), end="...")
     pca = PCA(n_components=rank)
@@ -21,16 +23,16 @@ def pca(data_matrix, rank):
     print("DONE")
     return reduced
 
-"""
-    Apply KNN in rank-K subspace
-    Args:
+def knn(model, labels):
+    """
+        Apply KNN in rank-K subspace
+        Args:
         model
         labels
-    Returns:
+        Returns:
         sklearn.neighbors.classification.KNeighborsClassifier
-    
-"""
-def knn(model, labels):
+        
+        """
     knn = neighbors.KNeighborsClassifier()
     return knn.fit(model, labels) # Fit the model using X as training data and y as target values
 
@@ -45,8 +47,8 @@ def knn(model, labels):
 """
 def predict(knn, model, label):
     pre = knn.predict(model)
-        #for i,_ in enumerate(pre):
-        #print("Predicted: {}, Actual: {}".format(pre[i], label))
+    for i,_ in enumerate(pre):
+        print("Predicted: {}, Actual: {}".format(pre[i], label))
     return pre
 
 """
