@@ -1,4 +1,9 @@
 .DS_STORE
 *.zip
+*.aux
+*.log
+*.gz
+*.tex
 *.pdf
+!Report.pdf
 HW5_data/
