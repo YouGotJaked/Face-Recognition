@@ -1,7 +1,5 @@
-import preprocess
 from preprocess import read_images, create_data_matrix
-import subspace
-from subspace import pca, knn, predict, accuracy
+from subspace import pca, knn, predict
 
 class Model():
     def __init__(self, path, K):
@@ -19,6 +17,5 @@ class TrainingModel(Model):
 class TestingModel(TrainingModel):
     def __init__(self, path, K, knn):
         super(TestingModel, self).__init__(path, K)
-        self.predict = [predict(self.knn[i], self.reduced[i], self.labels[i]) for i,_ in enumerate(K)]
-        self.accuracy = [accuracy(self.knn[i], K[i], self.reduced[i], self.labels) for i,_ in enumerate(K)]
+        self.predict = [predict(self.knn[i], K[i], self.reduced[i], self.labels) for i,_ in enumerate(K)]
 

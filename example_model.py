@@ -1,5 +1,4 @@
 import os
-import model
 from model import TrainingModel, TestingModel
 
 DIR = os.getcwd()
@@ -11,7 +10,6 @@ def main():
     training = TrainingModel(TRAINING_DIR, K)
     testing = TestingModel(TESTING_DIR, K, training.knn)
     testing.predict
-    testing.accuracy
 
 if __name__ == '__main__':
     main()
