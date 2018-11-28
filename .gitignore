@@ -5,5 +5,8 @@
 *.gz
 *.tex
 *.pdf
+*.fls
+*.dat
 !Report.pdf
 HW5_data/
+__pycache__/
